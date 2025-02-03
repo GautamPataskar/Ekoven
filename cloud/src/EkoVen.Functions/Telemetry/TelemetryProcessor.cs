@@ -1,4 +1,3 @@
-// EkoVen.Functions/Telemetry/TelemetryProcessor.cs
 using System;
 using System.Threading.Tasks;
 using Microsoft.Azure.WebJobs;
