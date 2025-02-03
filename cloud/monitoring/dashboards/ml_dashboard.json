@@ -1,0 +1,71 @@
+// monitoring/dashboards/ml_dashboard.json
+
+{
+  "properties": {
+    "lenses": {
+      "0": {
+        "order": 0,
+        "parts": {
+          "0": {
+            "position": {
+              "x": 0,
+              "y": 0,
+              "colSpan": 12,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [],
+              "type": "Extension/HubsExtension/PartType/MarkdownPart",
+              "settings": {
+                "content": {
+                  "settings": {
+                    "content": "# ML Model Performance Dashboard\nMonitoring key metrics for battery prediction models",
+                    "title": "ML Operations Overview",
+                    "subtitle": "Real-time monitoring of model performance"
+                  }
+                }
+              }
+            }
+          },
+          "1": {
+            "position": {
+              "x": 0,
+              "y": 4,
+              "colSpan": 6,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "resourceType",
+                  "value": "Microsoft.MachineLearningServices/workspaces"
+                }
+              ],
+              "type": "Extension/Microsoft_Azure_MachineLearning/PartType/MLMetricsPart",
+              "settings": {
+                "content": {
+                  "options": {
+                    "chart": {
+                      "metrics": [
+                        {
+                          "name": "PredictionAccuracy",
+                          "aggregationType": "Average"
+                        },
+                        {
+                          "name": "ModelLatency",
+                          "aggregationType": "Average"
+                        }
+                      ],
+                      "title": "Model Performance Metrics",
+                      "visualization": "Time chart"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

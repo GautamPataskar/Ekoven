@@ -1,0 +1,104 @@
+// monitoring/dashboards/performance_dashboard.json
+
+{
+  "properties": {
+    "lenses": {
+      "0": {
+        "order": 0,
+        "parts": {
+          "0": {
+            "position": {
+              "x": 0,
+              "y": 0,
+              "colSpan": 6,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "resourceType",
+                  "value": "Microsoft.Devices/IotHubs"
+                }
+              ],
+              "type": "Extension/Microsoft_Azure_IoTHub/PartType/IoTHubPart",
+              "settings": {
+                "content": {
+                  "options": {
+                    "chart": {
+                      "metrics": [
+                        {
+                          "resourceMetadata": {
+                            "id": "${iot_hub_id}"
+                          },
+                          "name": "d2c.telemetry.ingress.success",
+                          "aggregationType": "Total",
+                          "namespace": "microsoft.devices/iothubs",
+                          "metricVisualization": {
+                            "displayName": "Successful telemetry messages"
+                          }
+                        },
+                        {
+                          "resourceMetadata": {
+                            "id": "${iot_hub_id}"
+                          },
+                          "name": "d2c.telemetry.ingress.failed",
+                          "aggregationType": "Total",
+                          "namespace": "microsoft.devices/iothubs",
+                          "metricVisualization": {
+                            "displayName": "Failed telemetry messages"
+                          }
+                        }
+                      ],
+                      "title": "IoT Hub Message Processing",
+                      "visualization": "Time chart"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "1": {
+            "position": {
+              "x": 6,
+              "y": 0,
+              "colSpan": 6,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "resourceType",
+                  "value": "Microsoft.MachineLearningServices/workspaces"
+                }
+              ],
+              "type": "Extension/Microsoft_Azure_MachineLearning/PartType/MLMetricsPart",
+              "settings": {
+                "content": {
+                  "options": {
+                    "chart": {
+                      "metrics": [
+                        {
+                          "resourceMetadata": {
+                            "id": "${ml_workspace_id}"
+                          },
+                          "name": "ModelLatency",
+                          "aggregationType": "Average",
+                          "namespace": "microsoft.machinelearningservices/workspaces",
+                          "metricVisualization": {
+                            "displayName": "Model Inference Latency"
+                          }
+                        }
+                      ],
+                      "title": "ML Model Performance",
+                      "visualization": "Time chart"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

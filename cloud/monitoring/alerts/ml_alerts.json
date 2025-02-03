@@ -1,0 +1,80 @@
+// monitoring/alerts/ml_alerts.json
+
+{
+  "mlAlerts": [
+    {
+      "name": "ModelAccuracyDegradation",
+      "description": "Alert when model accuracy drops below threshold",
+      "severity": 2,
+      "enabled": true,
+      "evaluationFrequency": "PT15M",
+      "windowSize": "PT1H",
+      "criteria": {
+        "metricName": "PredictionAccuracy",
+        "metricNamespace": "Microsoft.MachineLearningServices/workspaces",
+        "operator": "LessThan",
+        "threshold": 0.85,
+        "timeAggregation": "Average"
+      },
+      "actions": [
+        {
+          "actionGroupId": "${action_group_id}",
+          "webhookProperties": {
+            "serviceUri": "${ml_webhook_url}",
+            "properties": {
+              "alertType": "ModelDegradation",
+              "severity": "High"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "HighModelLatency",
+      "description": "Alert when model inference latency exceeds threshold",
+      "severity": 2,
+      "enabled": true,
+      "evaluationFrequency": "PT1M",
+      "windowSize": "PT5M",
+      "criteria": {
+        "metricName": "ModelLatency",
+        "metricNamespace": "Microsoft.MachineLearningServices/workspaces",
+        "operator": "GreaterThan",
+        "threshold": 1000,
+        "timeAggregation": "Average"
+      },
+      "actions": [
+        {
+          "actionGroupId": "${action_group_id}"
+        }
+      ]
+    },
+    {
+      "name": "AnomalousPredictions",
+      "description": "Alert when model generates anomalous predictions",
+      "severity": 1,
+      "enabled": true,
+      "evaluationFrequency": "PT5M",
+      "windowSize": "PT15M",
+      "criteria": {
+        "metricName": "AnomalyScore",
+        "metricNamespace": "Microsoft.MachineLearningServices/workspaces",
+        "operator": "GreaterThan",
+        "threshold": 0.95,
+        "timeAggregation": "Maximum"
+      },
+      "actions": [
+        {
+          "actionGroupId": "${action_group_id}",
+          "webhookProperties": {
+            "serviceUri": "${anomaly_webhook_url}",
+            "properties": {
+              "alertType": "AnomalousPredictions",
+              "severity": "Critical"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+// monitoring/dashboards/system_health.json
+
+{
+  "properties": {
+    "lenses": {
+      "0": {
+        "order": 0,
+        "parts": {
+          "0": {
+            "position": {
+              "x": 0,
+              "y": 0,
+              "colSpan": 12,
+              "rowSpan": 2
+            },
+            "metadata": {
+              "inputs": [],
+              "type": "Extension/HubsExtension/PartType/MarkdownPart",
+              "settings": {
+                "content": {
+                  "settings": {
+                    "content": "# System Health Overview\nReal-time monitoring of system components and services",
+                    "title": "System Health",
+                    "subtitle": "Monitoring critical system metrics"
+                  }
+                }
+              }
+            }
+          },
+          "1": {
+            "position": {
+              "x": 0,
+              "y": 2,
+              "colSpan": 6,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "resourceType",
+                  "value": "Microsoft.Devices/IotHubs"
+                }
+              ],
+              "type": "Extension/Microsoft_Azure_IoTHub/PartType/IoTHubPart",
+              "settings": {
+                "content": {
+                  "options": {
+                    "chart": {
+                      "metrics": [
+                        {
+                          "name": "connectedDeviceCount",
+                          "aggregationType": "Average"
+                        }
+                      ],
+                      "title": "Connected Devices",
+                      "visualization": "Time chart"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

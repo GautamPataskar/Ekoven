@@ -1,0 +1,19 @@
+{
+    "version": "2.0",
+    "logging": {
+        "applicationInsights": {
+            "samplingSettings": {
+                "isEnabled": true,
+                "excludedTypes": "Request"
+            }
+        }
+    },
+    "functionTimeout": "00:05:00",
+    "extensions": {
+        "http": {
+            "routePrefix": "api",
+            "maxOutstandingRequests": 200,
+            "maxConcurrentRequests": 100
+        }
+    }
+}

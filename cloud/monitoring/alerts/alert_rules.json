@@ -1,0 +1,53 @@
+// monitoring/alerts/alert_rules.json
+
+{
+  "alertRules": [
+    {
+      "name": "HighLatencyAlert",
+      "description": "Alert when IoT Hub message latency exceeds threshold",
+      "severity": 2,
+      "enabled": true,
+      "evaluationFrequency": "PT1M",
+      "windowSize": "PT5M",
+      "criteria": {
+        "metricName": "d2c.telemetry.ingress.latency",
+        "metricNamespace": "Microsoft.Devices/IotHubs",
+        "operator": "GreaterThan",
+        "threshold": 5000,
+        "timeAggregation": "Average"
+      },
+      "actions": [
+        {
+          "actionGroupId": "${action_group_id}",
+          "webhookProperties": {
+            "serviceUri": "${webhook_url}",
+            "properties": {
+              "alertType": "Latency",
+              "severity": "High"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "DeviceDisconnectionAlert",
+      "description": "Alert when devices disconnect unexpectedly",
+      "severity": 1,
+      "enabled": true,
+      "evaluationFrequency": "PT5M",
+      "windowSize": "PT15M",
+      "criteria": {
+        "metricName": "connectedDeviceCount",
+        "metricNamespace": "Microsoft.Devices/IotHubs",
+        "operator": "LessThan",
+        "threshold": "${min_device_count}",
+        "timeAggregation": "Average"
+      },
+      "actions": [
+        {
+          "actionGroupId": "${action_group_id}"
+        }
+      ]
+    }
+  ]
+}
