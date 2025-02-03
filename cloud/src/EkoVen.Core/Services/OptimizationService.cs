@@ -1,4 +1,3 @@
-// EkoVen.Core/Services/OptimizationService.cs
 using System;
 using System.Threading.Tasks;
 using System.Collections.Generic;
