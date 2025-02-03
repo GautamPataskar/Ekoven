@@ -1,4 +1,3 @@
-// EkoVen.Functions/Telemetry/TelemetryValidator.cs
 using System;
 using System.Threading.Tasks;
 using EkoVen.Functions.Telemetry.Models;
