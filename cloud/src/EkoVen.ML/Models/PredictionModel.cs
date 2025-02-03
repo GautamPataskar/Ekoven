@@ -1,5 +1,3 @@
-// EkoVen.ML/Models/PredictionModel.cs
-
 using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
