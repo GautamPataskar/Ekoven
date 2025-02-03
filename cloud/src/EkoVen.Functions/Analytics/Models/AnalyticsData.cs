@@ -1,4 +1,3 @@
-// EkoVen.Functions/Analytics/Models/AnalyticsData.cs
 using System;
 using Newtonsoft.Json;
 
