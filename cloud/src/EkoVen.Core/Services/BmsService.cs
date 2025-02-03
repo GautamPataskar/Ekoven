@@ -1,4 +1,3 @@
-// EkoVen.Core/Services/BmsService.cs
 using System;
 using System.Threading.Tasks;
 using System.Collections.Generic;
