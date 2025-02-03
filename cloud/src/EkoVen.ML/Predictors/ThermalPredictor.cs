@@ -1,5 +1,3 @@
-// EkoVen.ML/Predictors/ThermalPredictor.cs
-
 using System;
 using System.Threading.Tasks;
 using System.Collections.Generic;
